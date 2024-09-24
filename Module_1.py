@@ -78,11 +78,15 @@ class Shop:
             for item in products_:
                 file.write(f"{item.name}, {item.weight}, {item.category}\n")
 
+            file.close()
+
+
     def get_products(self):     # считывает всю информацию из файла __file_name, закрывает его
                                 # и возвращает единую строку со всеми товарами из файла __file_name.
 
         with open(self.__file_name, 'r', encoding='utf-8') as file:
             data = file.readlines()
+            file.close()
         return data
 
 
