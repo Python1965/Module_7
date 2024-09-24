@@ -71,7 +71,6 @@ class Shop:
                         print(f"Продукт {item.name} уже есть в магазине")
                         products_.remove(item)
                         break
-        file.close()
 
         if len(products_) > 0:
             file = open(self.__file_name, "a+", encoding='utf-8')
@@ -86,7 +85,6 @@ class Shop:
 
         with open(self.__file_name, 'r', encoding='utf-8') as file:
             data = file.readlines()
-            file.close()
         return data
 
 
