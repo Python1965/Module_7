@@ -51,7 +51,8 @@ class Product:
 
 
 class Shop:
-    __file_name = 'products.txt'
+    def __init__(self):
+        self.__file_name = 'products.txt'
 
     def add(self, *products):   # принимает неограниченное количество объектов класса Product.
                                 # Добавляет в файл __file_name каждый продукт из products, если его ещё нет
