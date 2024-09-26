@@ -76,17 +76,49 @@ class WordsFinder:
 
                 dict_[key] = str_.split()
 
-        print(dict_)
+        return dict_
 
+    def find(self, word):
+        dic_main = self.get_all_words()
 
+        word = word.lower()
+        for key, values in dic_main.items():
+            i = 0
+            for val in values:
+                i += 1
+                if val == word:
+                    return {key: i}
+
+            return None
+
+    def count(self, word):
+        dic_main = self.get_all_words()
+
+        word = word.lower()
+        for key, values in dic_main.items():
+            i = 0
+            for val in values:
+                if val == word:
+                    i += 1
+
+            if i > 0: return {key: i}
+
+        return None
 
 
 def start():
-    dic_1 = {"test_file.txt": ["It's a text for task Найти везде,", "Используйте его для самопроверки.", "Успехов в решении задачи!", "text text text"]}
+    dic_1 = {"test_file.txt": ["It's a text for task Найти везде,",
+                               "Используйте его для самопроверки.",
+                               "Успехов в решении задачи!",
+                               "text text text"]}
 
-    inder1 = WordsFinder(dic_1)
-    inder1.get_all_words()
-    # inder2 = WordsFinder('test_file.txt')
+    finder1 = WordsFinder(dic_1)
+    finder1.get_all_words()
+    print(finder1.get_all_words())  # Все слова
+    print(finder1.find('TEXT'))   # 3 слово по счёту
+    print(finder1.count('teXT'))  # 4 слова teXT в тексте всего
+
+    #inder2 = WordsFinder('test_file.txt')
     # print(finder2.get_all_words())  # Все слова
     # print(finder2.find('TEXT'))  # 3 слово по счёту
     # print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
