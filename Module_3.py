@@ -61,10 +61,22 @@ class WordsFinder:
 
     def get_all_words(self):
         dict_ = {}
+        subst_list = [",", '.', '=', '!', '?', ';', ':', ' - ']
+
         for key in self.file_names:
+            str_ = ""
             with open(key, 'r', encoding='utf-8') as file:
                 for line in file:
-                    str_ = 
+                    line_ = line.rstrip()
+                    for item_ in subst_list:
+                        line_ = line_.replace(item_, " ")
+
+                    str_ += " " + line_.lower()
+                str_ = str_.replace(' ', "", 1)
+
+                dict_[key] = str_.split()
+
+        print(dict_)
 
 
 
@@ -73,6 +85,7 @@ def start():
     dic_1 = {"test_file.txt": ["It's a text for task Найти везде,", "Используйте его для самопроверки.", "Успехов в решении задачи!", "text text text"]}
 
     inder1 = WordsFinder(dic_1)
+    inder1.get_all_words()
     # inder2 = WordsFinder('test_file.txt')
     # print(finder2.get_all_words())  # Все слова
     # print(finder2.find('TEXT'))  # 3 слово по счёту
