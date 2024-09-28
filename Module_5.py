@@ -40,7 +40,7 @@ def file_info(cur_dir):
             print(f'    Найден файл: {filename}, Путь: {filepath}, Размер: {filesize} байт, Время изменения: {formatted_time}, Родительская директория: {parent_dir}')
 
         for dirname in dirnames:
-            new_dir = os.path.join(cur_dir, dirname).replace('.', "", 1)
+            new_dir = os.path.join(cur_dir, dirname.replace('.', "", 1))
             file_info(new_dir)
 
 
